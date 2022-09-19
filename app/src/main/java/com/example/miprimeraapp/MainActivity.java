@@ -2,55 +2,65 @@ package com.example.miprimeraapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
+    private EditText et1;
+    private EditText et2;
+    private TextView tv1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
-        // La actividad esta creada
+
+        et1 = (EditText)findViewById(R.id.txt_num1);
+        et2 = (EditText)findViewById(R.id.txt_num2);
+        tv1 = (TextView)findViewById(R.id.txt_resultado);
     }
 
-    @Override
-    protected void onStart()
+    // Este metodo realiza la suma
+    public void Sumar(View view)
     {
-        super.onStart();
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
-        // La actividad esta a punto de hacerse visible
+        String valor1 = et1.getText().toString();
+        String valor2 = et2.getText().toString();
+
+        int num1 = Integer.parseInt(valor1);
+        int num2 = Integer.parseInt(valor2);
+
+        int suma = (num1 + num2);
+        String resultado = String.valueOf(suma);
+        tv1.setText(resultado);
     }
 
-    @Override
-    protected void onResume()
+    public void Restar(View view)
     {
-        super.onResume();
-        Toast.makeText(this, "onResumen", Toast.LENGTH_SHORT).show();
-        // La actividad se ha vuelto visible (ahora se "reanuda").
+        String valor1 = et1.getText().toString();
+        String valor2 = et2.getText().toString();
+
+        int num1 = Integer.parseInt(valor1);
+        int num2 = Integer.parseInt(valor2);
+
+        int resta = (num1 - num2);
+        String resultado = String.valueOf(resta);
+
+        tv1.setText(resultado);
     }
 
-    @Override
-    protected void onPause()
+    public void Multiplicar(View view)
     {
-        super.onPause();
-        Toast.makeText(this, "onPause",Toast.LENGTH_SHORT).show();
-        // Enfocarse en otra actividad  (esta actividad est� a punto de ser "detenida").
-    }
+        String valor1 = et1.getText().toString();
+        String valor2 = et2.getText().toString();
 
-    @Override
-    protected void onStop()
-    {
-        super.onStop();
-        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
-        // La actividad ya no es visible (ahora est� "detenida")
-    }
-    
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
-        // La actividad est� a punto de ser destruida.
+        int num1 = Integer.parseInt(valor1);
+        int num2 = Integer.parseInt(valor2);
+        int multiplicacion = (num1 * num2);
+
+        String resultado = String.valueOf(multiplicacion);
+        tv1.setText(resultado);
     }
 }
